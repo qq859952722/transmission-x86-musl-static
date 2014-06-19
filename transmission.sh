@@ -43,9 +43,9 @@ make install
 ########### #################################################################
 
 mkdir $SRC/openssl && cd $SRC/openssl
-$WGET https://www.openssl.org/source/openssl-1.0.1g.tar.gz --no-check-certificate
-tar zxvf openssl-1.0.1g.tar.gz
-cd openssl-1.0.1g
+$WGET https://www.openssl.org/source/openssl-1.0.1h.tar.gz --no-check-certificate
+tar zxvf openssl-1.0.1h.tar.gz
+cd openssl-1.0.1h
 
 cat << "EOF" > openssl-musl.patch
 --- a/crypto/ui/ui_openssl.c    2013-09-08 11:00:10.130572803 +0200
@@ -100,9 +100,9 @@ make install
 ########### #################################################################
 
 mkdir $SRC/gettext && cd $SRC/gettext
-$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.18.3.2.tar.gz
-tar zxvf gettext-0.18.3.2.tar.gz
-cd gettext-0.18.3.2
+$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.1.tar.gz
+tar zxvf gettext-0.19.1.tar.gz
+cd gettext-0.19.1
 
 CC=$CC \
 CXX=$CXX \
@@ -119,9 +119,9 @@ make install DESTDIR=$BASE
 ######## ####################################################################
 
 mkdir $SRC/curl && cd $SRC/curl
-$WGET http://curl.haxx.se/download/curl-7.36.0.tar.gz
-tar zxvf curl-7.36.0.tar.gz
-cd curl-7.36.0
+$WGET http://curl.haxx.se/download/curl-7.37.0.tar.gz
+tar zxvf curl-7.37.0.tar.gz
+cd curl-7.37.0
 
 CC=$CC \
 CXX=$CXX \
@@ -157,9 +157,9 @@ make install
 ################ ############################################################
 
 mkdir $SRC/transmission && cd $SRC/transmission
-$WGET http://download.transmissionbt.com/files/transmission-2.82.tar.xz
-tar xvJf transmission-2.82.tar.xz
-cd transmission-2.82
+$WGET http://download.transmissionbt.com/files/transmission-2.83.tar.xz
+tar xvJf transmission-2.83.tar.xz
+cd transmission-2.83
 
 $WGET https://raw.github.com/uggedal/aports/master/main/transmission/musl-fix-includes.patch
 patch -p1 < musl-fix-includes.patch

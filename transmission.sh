@@ -119,9 +119,9 @@ make install DESTDIR=$BASE
 ######## ####################################################################
 
 mkdir $SRC/curl && cd $SRC/curl
-$WGET http://curl.haxx.se/download/curl-7.37.0.tar.gz
-tar zxvf curl-7.37.0.tar.gz
-cd curl-7.37.0
+$WGET http://curl.haxx.se/download/curl-7.37.1.tar.gz
+tar zxvf curl-7.37.1.tar.gz
+cd curl-7.37.1
 
 CC=$CC \
 CXX=$CXX \
@@ -130,7 +130,7 @@ CPPFLAGS=$CPPFLAGS \
 $CONFIGURE \
 --enable-static
 
-$MAKE
+$MAKE LIBS="-lssl -lcrypto"
 make install
 
 ############ ################################################################
@@ -157,9 +157,9 @@ make install
 ################ ############################################################
 
 mkdir $SRC/transmission && cd $SRC/transmission
-$WGET http://download.transmissionbt.com/files/transmission-2.83.tar.xz
-tar xvJf transmission-2.83.tar.xz
-cd transmission-2.83
+$WGET http://download.transmissionbt.com/files/transmission-2.84.tar.xz
+tar xvJf transmission-2.84.tar.xz
+cd transmission-2.84
 
 $WGET https://raw.github.com/uggedal/aports/master/main/transmission/musl-fix-includes.patch
 patch -p1 < musl-fix-includes.patch

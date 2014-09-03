@@ -43,9 +43,9 @@ make install
 ########### #################################################################
 
 mkdir $SRC/openssl && cd $SRC/openssl
-$WGET https://www.openssl.org/source/openssl-1.0.1h.tar.gz --no-check-certificate
-tar zxvf openssl-1.0.1h.tar.gz
-cd openssl-1.0.1h
+$WGET https://www.openssl.org/source/openssl-1.0.1i.tar.gz --no-check-certificate
+tar zxvf openssl-1.0.1i.tar.gz
+cd openssl-1.0.1i
 
 cat << "EOF" > openssl-musl.patch
 --- a/crypto/ui/ui_openssl.c    2013-09-08 11:00:10.130572803 +0200
@@ -76,33 +76,14 @@ patch -p1 < openssl-musl.patch
 make CC=$CC
 make CC=$CC install
 
-######### ###################################################################
-# ICONV # ###################################################################
-######### ###################################################################
-
-mkdir -p $SRC/iconv && cd $SRC/iconv
-$WGET http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
-tar zxvf libiconv-1.14.tar.gz
-cd libiconv-1.14
-
-CC=$CC \
-CXX=$CXX \
-LDFLAGS=$LDFLAGS \
-CPPFLAGS=$CPPFLAGS \
-$CONFIGURE \
---enable-static
-
-$MAKE
-make install
-
 ########### #################################################################
 # GETTEXT # #################################################################
 ########### #################################################################
 
 mkdir $SRC/gettext && cd $SRC/gettext
-$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.1.tar.gz
-tar zxvf gettext-0.19.1.tar.gz
-cd gettext-0.19.1
+$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.2.tar.gz
+tar zxvf gettext-0.19.2.tar.gz
+cd gettext-0.19.2
 
 CC=$CC \
 CXX=$CXX \
@@ -161,7 +142,7 @@ $WGET http://download.transmissionbt.com/files/transmission-2.84.tar.xz
 tar xvJf transmission-2.84.tar.xz
 cd transmission-2.84
 
-$WGET https://raw.github.com/uggedal/aports/master/main/transmission/musl-fix-includes.patch
+$WGET https://raw.githubusercontent.com/fabaff/aports/master/main/transmission/musl-fix-includes.patch
 patch -p1 < musl-fix-includes.patch
 
 CC=$CC \
@@ -180,5 +161,5 @@ OPENSSL_LIBS=-L$DEST/lib \
 LIBCURL_CFLAGS=-I$DEST/include \
 LIBCURL_LIBS=-L$DEST/lib
 
-$MAKE LIBS="-all-static -liconv -levent -lssl -lcrypto -lcurl"
+$MAKE LIBS="-all-static -levent -lssl -lcrypto -lcurl"
 make install

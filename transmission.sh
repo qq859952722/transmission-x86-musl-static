@@ -43,9 +43,9 @@ make install
 ########### #################################################################
 
 mkdir $SRC/openssl && cd $SRC/openssl
-$WGET https://www.openssl.org/source/openssl-1.0.1i.tar.gz --no-check-certificate
-tar zxvf openssl-1.0.1i.tar.gz
-cd openssl-1.0.1i
+$WGET https://www.openssl.org/source/openssl-1.0.1j.tar.gz --no-check-certificate
+tar zxvf openssl-1.0.1j.tar.gz
+cd openssl-1.0.1j
 
 cat << "EOF" > openssl-musl.patch
 --- a/crypto/ui/ui_openssl.c    2013-09-08 11:00:10.130572803 +0200
@@ -81,9 +81,9 @@ make CC=$CC install
 ########### #################################################################
 
 mkdir $SRC/gettext && cd $SRC/gettext
-$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.2.tar.gz
-tar zxvf gettext-0.19.2.tar.gz
-cd gettext-0.19.2
+$WGET http://ftp.gnu.org/pub/gnu/gettext/gettext-0.19.3.tar.gz
+tar zxvf gettext-0.19.3.tar.gz
+cd gettext-0.19.3
 
 CC=$CC \
 CXX=$CXX \

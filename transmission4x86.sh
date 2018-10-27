@@ -143,5 +143,5 @@ OPENSSL_CFLAGS=-I$DEST/include \
 OPENSSL_LIBS=-L$DEST/lib
 
 
-#$MAKE LIBS="-all-static -levent -lssl -lcrypto -lcurl -ldl"
+#$MAKE LIBS="-all-static -Wl,-dn -levent -lssl -lcrypto -lcurl -Wl,-dy -ldl"
 #make install
